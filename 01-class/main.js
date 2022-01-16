@@ -66,7 +66,7 @@ const students = [
     }
 ]
 const getName = (student) => {
-  return student.name
+    return student.name
 }
 
 const newArr = students.map((st)=> `<li>Hi, ${st.name}! You have ${st.scores} scores.</li>`)
