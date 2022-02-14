@@ -25,54 +25,36 @@ const students = [
     }
 ]
 
-function getStudentName(item, i) {
-    return `Index: ${i}: ${item.name}.`
+console.log(students.map( s => s.name))
+console.log(myMap(students, s => s.name))
+function myMap(array, callback) {
+    const newArr = []
+    for (let i = 0; i <array.length; i++) {
+        newArr[i] = callback(array[i])
+    }
+    return newArr
 }
 
-const mapIt = (array, callback) => {
-    const newArray = []
-    for (let i = 0; i < array.length; i++) {
-        newArray[i] = callback(array[i], i)
-    }
-    return newArray
-}
+console.log(students.filter( s => s.scores >= 100))
+console.log(myFilter(students, s => s.scores >= 100))
 
-
-
-console.log(mapIt(students, getStudentName))
-
-console.log(students.map(s => s)) // поверхнастная копия => ([...students])
-console.log(students.map(s => ({...s}))) // глубокая копия
-
-// console.log(students.map(s => s.name === 'Bob' ? {..s, scores: s.scores +10} : s ))
-console.log(students.map(s => {
-    if(s.name === 'Bob') {
-        return {...s, scores: s.scores + 10}
-    }
-    return s
-}))
-
-
-const filterIt = (array, callback) => {
-    const newArray = []
-    for (let i = 0; i < array.length; i++) {
+function myFilter(array, callback) {
+    const newArr = []
+    for (let i = 0; i <array.length; i++) {
         if(callback(array[i])) {
-            newArray.push(array[i])
+            newArr.push(array[i])
         }
     }
-    return newArray
-}
-
-console.log(students.filter(s => s.scores >= 100))
-console.log(filterIt(students, s => s.scores >= 100))
-
-const findIt = (array, callback) => {
-    for (let i = 0; i < array.length; i++) {
-        if(callback(array[i])) {
-            return array[i]
-        }
-    }
+    return newArr
 }
 
 console.log(students.find(s => s.name === 'Bob'))
-console.log(findIt(students, s => s.name === 'Bob'))
+console.log(myFind(students, s => s.name === 'Bob'))
+
+function myFind(array, callback) {
+    for (let i = 0; i <array.length; i++) {
+        if(callback(array[i])) {
+            return array[i];
+        }
+    }
+}

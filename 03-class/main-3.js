@@ -12,7 +12,7 @@ function onClickHandler(e) {
     console.dir(`${e.currentTarget.tagName}`)
 }
 
-// sml.onclick = onClickHandler
+// sml.onclick = onClickHandler //onClickHandler({.....})
 // mdm.onclick = onClickHandler
 // big.onclick = onClickHandler
 
@@ -21,9 +21,9 @@ function onClickHandler(e) {
 // big.addEventListener('click', onClickHandler, false)
 // big.removeEventListener('click', onClickHandler)
 
-a.addEventListener("click", onClickHandler)
+a.addEventListener('click', onClickHandler)
 
-sml.addEventListener("click", (e) => {
+sml.addEventListener('click', (e) => {
     if(e.target.tagName === 'BUTTON') {
         console.log(e.target.id)
     }

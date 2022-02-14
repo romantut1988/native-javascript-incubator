@@ -1,85 +1,68 @@
-const todoListID_1 = '23ht-83kf'
-const todoListID_2 = '89hd-03lj'
+const todoListID_1 = '63jg-87kh'//v1()
+const todoListID_2 = '96jk-01re'//v1()
 
 const todoLists = [
     {
-        id: todoListID_1,
-        title: 'What to learn',
-        filter: 'all',
-        // tasks: [
-        //     {id: '57hf', title: 'HTML', iDone: true},
-        //     {id: '68ko', title: 'CSS', iDone: true},
-        //     {id: '03lk', title: 'REACT', iDone: true},
-        // ]
+      id: todoListID_1,
+      title: 'What to learn',
+      filter: 'all',
+      // tasks: [
+      //     {id: 11, title: 'HTML', isDone: true},
+      //     {id: 12, title: 'CSS', isDone: true},
+      //     {id: 12, title: 'JS/TS', isDone: true}
+      // ]
     },
     {
         id: todoListID_2,
         title: 'What to buy',
         filter: 'all',
         // tasks: [
-        //     {id: '57hf', title: 'Meat', iDone: true},
-        //     {id: '68ko', title: 'Bear', iDone: true},
-        //     {id: '03lk', title: 'Milk', iDone: true},
+        //     {id: 21, title: 'Milk', isDone: true},
+        //     {id: 22, title: 'Meat', isDone: true},
+        //     {id: 23, title: 'Beer', isDone: true}
         // ]
     },
 ]
 
 const tasks = {
-    [todoListID_1]: [  // 'todoListID_1' -> '23ht-83kf'
-        {id: '57hf', title: 'HTML', iDone: true},
-        {id: '68ko', title: 'CSS', iDone: true},
-        {id: '03lk', title: 'REACT', iDone: true},
+    [todoListID_1]: [
+        {id: 11, title: 'HTML', isDone: true},
+        {id: 12, title: 'CSS', isDone: true},
+        {id: 12, title: 'JS/TS', isDone: true}
     ],
     [todoListID_2]: [
-        {id: '57hf', title: 'Meat', iDone: true},
-        {id: '68ko', title: 'Bear', iDone: true},
-        {id: '03lk', title: 'Milk', iDone: true},
+        {id: 21, title: 'Milk', isDone: true},
+        {id: 22, title: 'Meat', isDone: true},
+        {id: 23, title: 'Beer', isDone: true}
     ]
 }
 
 console.log(tasks[todoListID_1])
-console.log(...tasks[todoListID_1].filter(t => t.title === 'HTML'))
-console.log([tasks[todoListID_1]])
-console.log([...tasks[todoListID_1]] === tasks[todoListID_1])
-console.log([...tasks[todoListID_1], {id: '57hf', title: 'Meat', iDone: true}])
+console.log(tasks[todoListID_1].find(t => t.title === 'HTML'))
+console.log(tasks[todoListID_1].map(t => ({...t, isDone: false})))
+console.log(tasks[todoLists[0].id])
 
-console.log({...tasks,
-    [todoListID_1]: [
-        ...tasks[todoListID_1],
-        {id: '57hf', title: 'HTML', iDone: true}
-    ]
-})
-
-console.log(todoLists)
-// reduce
 const nums = [1, 2, 3, 4, 5]
-console.log(nums.reduce( (sum, el) => sum + el)) // 15
-
-let sum = nums[0]
-for (let i = 1; i < nums.length; i++) {
-    sum = sum + nums[i]
-}
-
-console.log(nums.reduce( (max, el) => max > el ? max: el))
+console.log(nums.reduce((acc, el) => acc + el, 0))
 
 const students = [
     {
         name: 'Bob',
         age: 22,
         isMarried: true,
-        scores: 120
+        scores: 85 // +10
     },
     {
         name: 'Alex',
         age: 21,
         isMarried: true,
-        scores: 85
+        scores: 89
     },
     {
-        name: 'Michell',
+        name: 'Nick',
         age: 20,
         isMarried: false,
-        scores: 89
+        scores: 120
     },
     {
         name: 'John',
@@ -89,21 +72,22 @@ const students = [
     }
 ];
 
-console.log(students.reduce((sum, st) => sum + st.scores, 0))
-console.log(students.reduce((best, st) => best.scores >  st.scores ? best: st,))
-
-
-console.log(students.reduce((arr, st) => {
-    return arr.concat({...st, scores: st.scores +10})
+console.log(students.reduce((acc, el) => {
+    if(el.age > 20) {
+        acc.push(el.name)
+        return acc
+    }
+    return acc
 }, []))
 
-console.log(students.reduce((data, st) => {
-        data[st.name] = [st.age, st.scores, st.isMarried]
-    return data
-}, {})
+console.log(students
+    .filter(s => s.age > 20)
+    .map(s => s.name)
 )
 
-let data = {}
-for (let i = 0; i < students.length; i++) {
-    data[students[i].name] = [students[1].age, students[1].scores, students[1].isMarried]
-}
+console.log(students.reduce((acc, el) => {
+    if(acc.scores > el.scores) {
+        return acc
+    }
+    return el
+}))
