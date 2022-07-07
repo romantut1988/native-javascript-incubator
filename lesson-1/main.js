@@ -1,73 +1,51 @@
-// Примитивы:staring, number, boolean, null, undefined, NaN, Infinity, Simbol, BigInt.
-const prop = 'name'
-const test = {
-    name: 'Bob'
-}
+// 1.У объектов сложная структура (array, object, function)
+// 2. Ссылочный тип данных.
 
-// Объекты: объекты, массивы, функции.
-console.log(test[prop])
+const user = {
+    name: "Alex",
+    age: 23,
+    isOnline: false
+} // #123
 
-const user = { // #345
-    name:'Bob', // примитив
-    friends:['Alex', 'Donald'], // #007
-    technologies: []
-}
+const user2 = user // #123
+// {}, new Object();
 
-const user_2 = user
-user_2.name = 'Anne'
-console.log(user_2)
+console.log(user2 === user) // true
+
+
+user2.name = "Bob"
 console.log(user)
 
-const copyUser = {...user}
-copyUser.name = 'Bob'
+console.log({} === {})
+
+const arr = []
+const arr2 = arr
+
+// const copyUser = {}
+//
+// copyUser.name = user.name
+// copyUser.age = user.age
+// copyUser.isOnline = user.isOnline
+
+const propName = "friends"
+
+const copyUser = {
+    ...user,
+    isOnline: true,
+    name: "Bob",
+    [propName]: ["Alex", "Donald", "Max"]
+} // spread operator
+
+
+// copyUser.isOnline = true
+console.log(user)
+
+// оригинал -> делаем копию -> вносим изменикния в копию -> используем копию
 console.log(copyUser)
-console.log(user)
-console.log(copyUser.friends === user.friends)
-copyUser.friends.push('Helge')
+
+// deep copy
+const copy2User = {...copyUser, friends: [...copyUser.friends]} // [] - ?
+
+copy2User.friends.push("Anna")
+console.log(copy2User.friends === copyUser.friends)
 console.log(copyUser)
-console.log(user)
-const deepCopyUser = {...user, friends: [...user.friends], technologies: []}
-// delete deepCopyUser.friends
-deepCopyUser.friends.push('Olga')
-console.log(deepCopyUser)
-console.log(user)
-user.age = null
-const deepDeepCopy = {...deepCopyUser, friends: deepCopyUser.friends.filter(f => f.name !== 'Olga')}
-console.log(deepCopyUser === deepCopyUser) // false новая ссылка
-delete user.friends
-console.log(user)
-console.log(copyUser)
-
-
-const students = [
-    {
-        name: 'Bob',
-        age: 22,
-        isMarried: true,
-        scores: 120
-    },
-    {
-        name: 'Alex',
-        age: 21,
-        isMarried: true,
-        scores: 85
-    },
-    {
-        name: 'Michell',
-        age: 20,
-        isMarried: false,
-        scores: 89
-    },
-    {
-        name: 'John',
-        age: 19,
-        isMarried: false,
-        scores: 100
-    }
-]
-const getName = (student) => {
-    return student.name
-}
-
-const newArr = students.map((st)=> `<li>Hi, ${st.name}! You have ${st.scores} scores.</li>`)
-console.log(newArr)
