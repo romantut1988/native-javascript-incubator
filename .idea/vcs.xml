@@ -2,6 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/quadcopter-mockup-freelance" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/native-javascript-incubator" vcs="Git" />
   </component>
 </project>

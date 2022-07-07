@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/js-incubator.iml" filepath="$PROJECT_DIR$/.idea/js-incubator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/native-javascript-incubator.iml" filepath="$PROJECT_DIR$/.idea/native-javascript-incubator.iml" />
     </modules>
   </component>
 </project>
