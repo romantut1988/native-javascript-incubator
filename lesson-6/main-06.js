@@ -129,7 +129,7 @@ let trueStudents = deepCopyStudents.map(s => {
 })
 console.log(trueStudents)
 
-// 10. Nick женился. Выполните соответствующее преобразование массива students (map) === ????? ====
+// 10. Nick женился. Выполните соответствующее преобразование массива students (map)
 let studentsWithMarriedNick = deepCopyStudents.map(s => {
     if (s.name === "Nick") {
         return {...s, isMarried: true}
@@ -143,13 +143,25 @@ console.log(ann)
 
 // 12. Найдите студента с самым высоким баллом (reduce)
 let bestStudent = deepCopyStudents.reduce((acc, s) => {
-    return acc > s.scores ? acc: s.scores
+    return acc > s.scores ? acc : s.scores
 }, 0)
 console.log(bestStudent)
 
 // 13. Найдите сумму баллов всех студентов (reduce)
 let scoresSum = deepCopyStudents.reduce((acc, s) => {
-    return acc += s.scores
+    return acc + s.scores
 }, 0)
 console.log(scoresSum)
 
+// 14. Напишите функцию addFriends, которая принимает параметром массив students
+// и добавляет к каждому студенту свойство "friends",
+// значением которого является мвссив имён всех остальных студентов из массива,
+// за исключением собственного имени студента. Т.е. в друзьях у Боба Боба быть не должно.
+const addFriends = (students) => {
+    return students.map(s => (
+        {...s, friends: students
+                .map(s => s.name)
+                .filter(st => st !== s.name)}
+    ))
+}
+console.log(addFriends(students));
