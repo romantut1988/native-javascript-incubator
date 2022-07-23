@@ -1,3 +1,48 @@
+let students = [
+    {
+        name: "Bob",
+        age: 22,
+        isMarried: true,
+        scores: 85,
+        isStudent: true
+    },
+    {
+        name: "Alex",
+        age: 21,
+        isMarried: true,
+        scores: 90,
+        isStudent: true
+    },
+    {
+        name: "Helen",
+        age: 20,
+        isMarried: false,
+        scores: 110,
+        isStudent: true
+    },
+    {
+        name: "Nick",
+        age: 20,
+        isMarried: false,
+        scores: 120,
+        isStudent: true
+    },
+    {
+        name: "John",
+        age: 19,
+        isMarried: false,
+        scores: 100,
+        isStudent: true
+    },
+    {
+        name: "Ann",
+        age: 20,
+        isMarried: false,
+        scores: 105,
+        isStudent: true
+    },
+];
+
 const user = {
     name: "Bob",
     age: 23,
@@ -67,5 +112,44 @@ let notMarriedStudents = deepCopyStudents.filter(s => s.isMarried)
 console.log(notMarriedStudents)
 
 // 8. Сформируйте массив имён студентов (map)
-let studentsNames = deepCopyStudents.map( s => s.name)
+let studentsNames = deepCopyStudents.map(s => s.name)
 console.log(studentsNames);
+
+// 8a. Сформируйте строку из имён студентов разделённых
+// - запятой (join)
+// - пробелом (join)
+let namesWithComma = studentsNames.join(', ')
+let namesWithSpace = studentsNames.join(' ')
+console.log(namesWithComma)
+console.log(namesWithSpace)
+
+// 9. Добавьте всем студентам свойство "isStudent" со значением true (map)
+let trueStudents = deepCopyStudents.map(s => {
+    return {...s, isStudent: true}
+})
+console.log(trueStudents)
+
+// 10. Nick женился. Выполните соответствующее преобразование массива students (map) === ????? ====
+let studentsWithMarriedNick = deepCopyStudents.map(s => {
+    if (s.name === "Nick") {
+        return {...s, isMarried: true}
+    } else return s
+})
+console.log(studentsWithMarriedNick)
+
+// 11. Найдите студента по имени Ann (find)
+let ann = deepCopyStudents.find(s => s.name === "Ann")
+console.log(ann)
+
+// 12. Найдите студента с самым высоким баллом (reduce)
+let bestStudent = deepCopyStudents.reduce((acc, s) => {
+    return acc > s.scores ? acc: s.scores
+}, 0)
+console.log(bestStudent)
+
+// 13. Найдите сумму баллов всех студентов (reduce)
+let scoresSum = deepCopyStudents.reduce((acc, s) => {
+    return acc += s.scores
+}, 0)
+console.log(scoresSum)
+
