@@ -254,9 +254,6 @@ axiosWithPromises.get("https://vk.com/users")
         console.log("All works done!")
     })
 
-
-async
-await
 const getUsers = () => {
     axiosWithPromises.get("https://vk.com/users")
         .then(users => {
