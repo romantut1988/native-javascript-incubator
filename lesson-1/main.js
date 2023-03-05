@@ -1,51 +1,66 @@
-// 1.У объектов сложная структура (array, object, function)
-// 2. Ссылочный тип данных.
+// примитивы
+// number, string, boolean, null, undefined, NaN, Symbol, BigInt
 
-const user = {
-    name: "Alex",
-    age: 23,
-    isOnline: false
-} // #123
+// объекты
+// object, array => данные
+// function
 
-const user2 = user // #123
-// {}, new Object();
+// - более сложная структура
+// - имеют свойства и методы
+// - ссылочный тип данных
 
-console.log(user2 === user) // true
-
-
-user2.name = "Bob"
-console.log(user)
-
-console.log({} === {})
-
-const arr = []
-const arr2 = arr
-
-// const copyUser = {}
-//
-// copyUser.name = user.name
-// copyUser.age = user.age
-// copyUser.isOnline = user.isOnline
-
-const propName = "friends"
-
-const copyUser = {
-    ...user,
-    isOnline: true,
+const user1 = {
     name: "Bob",
-    [propName]: ["Alex", "Donald", "Max"]
-} // spread operator
+    age: 24,
+    isStudent: false
+}
 
+// const user2 = user1
+//
+// user2.name = "Alex"
+// console.log(user2.name)
 
-// copyUser.isOnline = true
-console.log(user)
+// const user1Copy = {
+//     name: user1.name,
+//     age: user1.age,
+//     isStudent: user1.isStudent
+// }
+// console.log(user1 === user1Copy)
 
-// оригинал -> делаем копию -> вносим изменикния в копию -> используем копию
-console.log(copyUser)
+const user1Copy = {...user1}
 
-// deep copy
-const copy2User = {...copyUser, friends: [...copyUser.friends]} // [] - ?
+user1Copy.name = "Alex"
+console.log(user1)
+console.log(user1 === user1Copy)
 
-copy2User.friends.push("Anna")
-console.log(copy2User.friends === copyUser.friends)
-console.log(copyUser)
+const users = [
+    {
+        id: 1,
+        name: "Bob",
+        isStudent: true
+    },
+    {
+        id: 2,
+        name: "Alex",
+        isStudent: true
+    },
+    {
+        id: 3,
+        name: "Ann",
+        isStudent: true
+    },
+    {
+        id: 4,
+        name: "Donald",
+        isStudent: true
+    },
+]
+users.pop()
+
+// делаем копию = вносим изменения в копию = используем копию с изменениями
+const usersCopy = [...users]
+usersCopy.pop()
+
+console.log(users)
+console.log(usersCopy)
+console.log(users === usersCopy)
