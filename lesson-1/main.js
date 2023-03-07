@@ -55,7 +55,7 @@ const users = [
         isStudent: true
     },
 ]
-users.pop()
+users.shift()
 
 // делаем копию = вносим изменения в копию = используем копию с изменениями
 const usersCopy = [...users]
