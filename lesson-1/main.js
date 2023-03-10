@@ -96,6 +96,13 @@ const newUser = {
     isMarried: true
 }
 
+const new2User = {
+    id: 6,
+    name: "Renat",
+    isStudent: true,
+    isMarried: false
+}
+
 const addUsers = [...users, newUser]
 
 const concatUsers = [...users, ...users2]
