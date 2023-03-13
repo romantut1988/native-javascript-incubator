@@ -24,74 +24,34 @@ const students = [
         scores: 100
     }
 ];
-
-// const names = ["Bob", "Alex", "Nick", "John"]
-
-const getNames = (arr) => {
+const getName = st => st.name
+const getNames = (array) => {
     const result = []
-
-    const func = (st) => st.name
-
-    for (let i = 0; i < arr.length; i++) {
-        const newValue = func(arr[i])
-        result.push(newValue)
-    }
-    return result
-}
-console.log(getNames(students))
-
-const addScores = (arr) => {
-    const result = []
-
-    const func = (st) => ({...st, scores: st.scores + 10})
-
-    for (let i = 0; i < arr.length; i++) {
-        const newValue = func(arr[i])
-        result.push(newValue)
+    const getName = st => st.name
+    for (let i = 0; i < array.length; i++) {
+        const newValue = getName(array[i])
+        result[i] = newValue
     }
     return result
 }
 
-console.log(addScores(students))
-
-const getMappedArray = (arr, func) => {
+const getScores = (array) => {
     const result = []
-    for (let i = 0; i < arr.length; i++) {
-        const newValue = func(arr[i])
-        result.push(newValue)
+    const getStScores = st => st.scores
+    for (let i = 0; i < array.length; i++) {
+        const newValue = getStScores(array[i])
+        result[i] = newValue
     }
     return result
 }
 
-console.log(getMappedArray(students, (st) => st.name))
-
-console.log(students.map((st) => st.name))
-
-console.log(students.filter(st => st.scores >= 100))
-
-const myFilter = (arr, func) => {
+const sMap = (array, func) => {
     const result = []
-    for (let i = 0; i < arr.length; i++) {
-        const newValue = func(arr[i]) // => true или false
-        if (newValue === true) {
-            result.push(arr[i])
-        }
+    for (let i = 0; i < array.length; i++) {
+        const newValue = func(array[i])
+        result[i] = newValue
     }
     return result
 }
-
-const callbackFn = st => st.scores >= 100
-console.log(myFilter(students, callbackFn))
-
-const myFind = (arr, func) => {
-    for (let i = 0; i < arr.length; i++) {
-        const newValue = func(arr[i]) // => true или false
-        if (newValue === true) {
-            return arr[i]
-        }
-    }
-}
-
-console.log(students.find(st => st.name === "Alex"))
-console.log(myFind(students.find(st => st.name === "Alex")))
-
+console.log(students.map(getName))
+console.log(sMap(students, getName))
