@@ -45,16 +45,6 @@ const getScores = (array) => {
     return result
 }
 
-const getScores2 = (array) => {
-    const result = []
-    const getStScores = st => st.scores
-    for (let i = 0; i < array.length; i++) {
-        const newValue = getStScores(array[i])
-        result[i] = newValue
-    }
-    return result
-}
-
 const sMap = (array, func) => {
     const result = []
     for (let i = 0; i < array.length; i++) {
@@ -66,16 +56,18 @@ const sMap = (array, func) => {
 console.log(students.map(getName))
 console.log(sMap(students, getName))
 
-const sFilter = (array, func) => {
+function sFilter(func){
     const result = []
-    for (let i = 0; i < array.length; i++) {
-        if (func(array[i]) === true) {
-            result.push(array[i])
+    for (let i = 0; i < this.length; i++) {
+        if (func(this[i]) === true) {
+            result.push(this[i])
         }
     }
     return result
 }
-console.log(sFilter(students, st => st.scores >= 100))
+Array.prototype.sFilter = sFilter
+
+console.log(students.sFilter(st => st.scores >= 100))
 console.log(students.filter(st => st.scores >= 100))
 
 const sPop = (array) => {
@@ -83,3 +75,12 @@ const sPop = (array) => {
     array.length = array.length - 1
     return lastEl
 }
+console.log(sPop(students))
+console.log(students.length)
+console.log(students[students.length - 1])
+
+const sPush = (array, el) => {
+    array[array.length] = el
+    return array.length
+}
+console.log(sPush(students))
