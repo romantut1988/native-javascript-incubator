@@ -1,26 +1,33 @@
-// event
-// обработчик, handler, подписчик, subscriber, слушатель, listener,
-const handler = (event) => {
-    event.stopPropagation()
-    console.log(event.currentTarget.id);
-} // handler({....})
+// fn => fn()
+// fn => обработчик (handler), подписчик (subscriber), слушатель (listener)
+// {key: value, ...} => объект с информацией о событии => event, ev, e
+// fn(event)
 
-const sm = document.getElementById("small");
-const md = document.getElementById("medium");
-const bg = document.getElementById("big");
+const sm = document.getElementById("small")
+const md = document.getElementById("medium")
+const bg = document.getElementById("big")
 
-sm.onclick = handler
-md.onclick = handler
-bg.onclick = handler
-// sm.onclick = null
-// console.log({} === {}) //false
-
-sm.addEventListener("click", handler)
-sm.removeEventListener("click", handler)
-
-
-const a = document.getElementById("a")
-a.onclick = (e) => {
-    e.preventDefault();
-    alert("hey!!!")
+const onClickHandler1 = (e) => {
+    e.stopPropagation()
+    if (e.target.tagName === "BUTTON") {
+        alert(e.target.id)
+    }
 }
+// const onClickHandler2 = (e) => {
+//     alert("medium")
+// }
+const onClickHandler3 = (e) => {
+    alert("Всем привет !!!")
+}
+
+
+function func() {
+
+}
+
+sm.onclick = onClickHandler1
+sm.onclick = null
+
+sm.addEventListener("click", onClickHandler1)
+// md.addEventListener("click", onClickHandler2)
+bg.addEventListener("click", onClickHandler3)
