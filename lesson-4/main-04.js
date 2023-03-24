@@ -26,4 +26,47 @@ const tasks = {
         {id: 6, title: "Chicken", isDone: false},
     ]
 }
-console.log(tasks[todoLists[0].id])
+console.log(tasks[todoLists[0].id][1].isDone)
+
+const nums = [2, 4, 6, 3, 5]
+nums.reduce((acc, el) => {
+    return acc + el
+}, 0)
+
+console.log(nums.reduce((acc, el) => acc > el ? acc : el))
+
+const newData = {
+    "1": {
+        name: "Bob",
+        age: 22,
+        isMarried: true,
+        scores: 85
+    },
+    "2": {
+        name: "Alex",
+        age: 21,
+        isMarried: true,
+        scores: 89
+    }
+}
+console.log(newData)
+
+const data = students.reduce((acc, el) => {
+    acc[el.id] = {...el}
+    delete acc[el.id].id
+    return acc
+}, {})
+
+console.log(data)
+
+const st20 = students.map(s => ({...s, scores: s.scores + 20}))
+console.log(st20)
+
+const st20reduce = students.reduce((acc, el) => {
+    const copy = {...el}
+    copy.scores = el.scores + 20
+    acc.push(copy)
+    return acc
+}, [])
+
+console.log(st20reduce)
