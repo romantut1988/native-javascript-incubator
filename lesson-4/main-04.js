@@ -64,7 +64,7 @@ console.log(st20)
 
 const st20reduce = students.reduce((acc, el) => {
     const copy = {...el}
-    copy.scores = el.scores + 20
+    copy.scores = el.scores + 30
     acc.push(copy)
     return acc
 }, [])
